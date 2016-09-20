@@ -8,7 +8,10 @@ from django.db import models
 
 # Create your models here.
 
+#Defining the manager class which is called below.
 class AccountManager(BaseUserManager):
+	#This overrides the default create_user method present in AccountManager
+	#This is done if we want to have our own condition checks.
 	def create_user(self,email,password=None, **kwargs):
 		if not email:
 			raise ValueError('Users must have a valid email address')
@@ -24,6 +27,7 @@ class AccountManager(BaseUserManager):
 
 		return account
 
+	# Overriding the create_superuser to make is_admin field as true
 	def create_superuser(self,email,password, **kwargs):
 		account=self.create_user(email,password, **kwargs)
 

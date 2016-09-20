@@ -118,3 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#This line is added to make sure that the model we created
+# is being used by Django.
+AUTH_USER_MODEL = 'authentication.Account'
